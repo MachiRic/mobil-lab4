@@ -4,8 +4,9 @@ var ready = false;
 function sendMessageFromForm(event) {
     event.preventDefault();
     if (ready) {
-        var message = document.getElementById("messageInput").value;
-        pubnub.publish({ message: { "text": message }, channel: 'demo_tutorial' });
+		let message = document.getElementById("messageInput").value;
+		var me = document.getElementById("userInput").value;
+        pubnub.publish({ message: { "text": message, "user": me }, channel: 'demo_tutorial' });
         document.getElementById("messageInput").value = "";
     }
 }
@@ -23,11 +24,24 @@ window.onload = function() {
             }
         },
         message: function(msg) {
-            console.log(msg);
-            var element = document.createElement("div");
-            element.className = "message";
-            element.innerHTML = msg.message.text;
-            document.getElementById("messages").append(element);
+			var me = document.getElementById("userInput").value;
+			console.log(msg);
+			console.log("publisher: ", msg.publisher.split("-")[5])
+            let element = document.createElement("div");
+            
+			element.innerHTML = msg.message.text;
+			let usr = document.createElement("div");
+			usr.className = "usr";
+			usr.innerHTML = `user: ${msg.message.user}`;
+			if (msg.message.user===me) {
+				element.className = "message message-other";
+			}
+			else {
+				element.className = "message-other";
+			}
+			element.appendChild(usr);
+			document.getElementById("messages").append(element);
+			
         },
         presence: function(presenceEvent) {
             // handle presence
@@ -43,9 +57,6 @@ function deviceOrientationListener(event) {
   var alpha   = event.alpha; //z axis rotation [0,360)
   var beta     = event.beta; //x axis rotation [-180, 180]
   var gamma   = event.gamma; //y axis rotation [-90, 90]
-
-
-
 
   //Check if absolute values have been sent
   if (typeof event.webkitCompassHeading !== "undefined") {

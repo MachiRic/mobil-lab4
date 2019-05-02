@@ -10,7 +10,7 @@ html, body
     flex-direction: column;
 }
 
-.message {
+.message-other {
     font-family: sans-serif;
     background-color: #008cff;
     color: white;
@@ -22,7 +22,7 @@ html, body
     align-self: flex-end;
 }
 
-.message:nth-child(odd) {
+.message {
     align-self: flex-start;
     background-color: #e5e5e5;
     color: black;
@@ -56,4 +56,8 @@ html, body
 .messageForm {
     width: 100%;
     display: flex;
+}
+
+.usr {
+    font-size: 10px;
 }
