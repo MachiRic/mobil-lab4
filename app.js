@@ -27,7 +27,10 @@ window.onload = function() {
             var element = document.createElement("div");
             element.className = "message";
             element.innerHTML = msg.message.text;
-            document.getElementById("messages").append(element);
+
+            if (msg.channel == document.getElementById("header").innerHTML) {
+                document.getElementById("messages").append(element);
+            }
         },
         presence: function(presenceEvent) {
             // handle presence
@@ -35,7 +38,7 @@ window.onload = function() {
     })
     console.log("Subscribing..");
     pubnub.subscribe({
-        channels: ['demo_tutorial']
+        channels: ['Unknown', "North", "East", "South", "West"]
     });
 }
 
