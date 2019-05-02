@@ -34,10 +34,12 @@ window.onload = function() {
 			usr.className = "usr";
 			usr.innerHTML = `user: ${msg.message.user}`;
 			if (msg.message.user===me) {
-				element.className = "message message-other";
+                
+                element.className = "message-other";
 			}
 			else {
-				element.className = "message-other";
+                element.className = "message message-other";
+				
 			}
 			element.appendChild(usr);
 			document.getElementById("messages").append(element);
