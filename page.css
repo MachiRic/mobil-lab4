@@ -8,6 +8,7 @@ html, body
     width: 100%;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .message-other {
@@ -32,7 +33,6 @@ html, body
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 #messageInput {
@@ -60,4 +60,12 @@ html, body
 
 .usr {
     font-size: 10px;
+}
+#header {
+    text-align: center;
+    font-size: 24px;
+    font-family: sans-serif;
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+    background-color: #fcfcfc;
 }

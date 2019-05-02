@@ -5,6 +5,7 @@
 	<meta charset="utf-8" />
 
 	<title>Messaging</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<style>
 		@import 'page.css';
@@ -15,13 +16,14 @@
 	<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
 	<script src="app.js"></script>
 
-	<div class="container">
-		<div id="messages">
-		</div>
+    <div class="container">
+        <div id="header">Unknown</div>
+        <div id="messages">
+        </div>
 		<form class="messageForm" onsubmit="sendMessageFromForm(event);">
 			<input type="text" id="userInput" value="user"/>
-			<input type="text" id="messageInput" />
-			<input type="submit" id="messageSend" />
-		</form>
-	</div>
+            <input type="text" id="messageInput" />
+            <input type="submit" id="messageSend" />
+        </form>
+    </div>
 </body>
