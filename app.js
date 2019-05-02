@@ -1,5 +1,17 @@
+var pubnub = null;
+var ready = false;
+
+function sendMessageFromForm(event) {
+    event.preventDefault();
+    if (ready) {
+        var message = document.getElementById("messageInput").value;
+        pubnub.publish({ message: { "text": message }, channel: 'demo_tutorial' });
+        document.getElementById("messageInput").value = "";
+    }
+}
+
 window.onload = function() {
-    var pubnub = new PubNub({
+    pubnub = new PubNub({
         publishKey: 'pub-c-59697c06-f283-4238-8e6e-80683e33d185',
         subscribeKey: 'sub-c-ef28c7fe-6cba-11e9-a1d6-2a8c316da507'
     });
@@ -7,11 +19,15 @@ window.onload = function() {
     pubnub.addListener({
         status: function(statusEvent) {
             if (statusEvent.category === "PNConnectedCategory") {
-                pubnub.publish({ message: { "color": "blue" }, channel: 'demo_tutorial' });
+                ready = true;
             }
         },
         message: function(msg) {
-            console.log(msg.message);
+            console.log(msg);
+            var element = document.createElement("div");
+            element.className = "message";
+            element.innerHTML = msg.message.text;
+            document.getElementById("messages").append(element);
         },
         presence: function(presenceEvent) {
             // handle presence

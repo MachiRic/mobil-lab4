@@ -4,43 +4,56 @@ html, body
 	padding: 0px;
 }
 
-.my-page
-{
-	display: none;
+#messages {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.my-header
-{
+.message {
+    font-family: sans-serif;
+    background-color: #008cff;
+    color: white;
+    border-radius: 10px;
+    max-width: 250px;
+    padding: 10px;
+    margin: 5px;
+    word-break: break-all;
+    align-self: flex-end;
 }
 
-.my-header-image
-{
-	width: 100%;
-	height: auto;
+.message:nth-child(odd) {
+    align-self: flex-start;
+    background-color: #e5e5e5;
+    color: black;
 }
 
-.my-icon-back
-{
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	width: 12%;
-	height: auto;
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.my-content
-{
-	margin: 10px 20px;
-	padding: 0;
-	font-family: sans-serif;
+#messageInput {
+    flex-grow: 1;
+    padding: 10px;
 }
 
-.my-content h1
-{
-	font-size: 150%;
+#messageSend {
+    flex-shrink: 1;
+
+    background-color: #008cff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
-.my-content p, .my-content ul
-{
-	font-size: 120%;
+.messageForm {
+    width: 100%;
+    display: flex;
 }
